@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Container, List, ListItem } from "@mui/material";
-import { Storage, Code, Web, GitHub, BugReport } from "@mui/icons-material";
 import styled from "styled-components";
 import { fadeIn } from "../animations";
 

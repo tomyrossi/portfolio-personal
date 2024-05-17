@@ -57,7 +57,7 @@ const theme = createTheme({
                     '&:hover': {
                         backgroundColor: 'rgba(255, 154, 139, 0.1)',
                     },
-                    transition: 'background-color 0.3s ease',
+                    transition: 'background-color 0.5s ease',
                 },
             },
         },
