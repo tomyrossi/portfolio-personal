@@ -15,83 +15,57 @@ import {
 } from "@mui/icons-material";
 import styled from "styled-components";
 import SchoolIcon from "@mui/icons-material/School";
-import Avatar from "@mui/material/Avatar";
 import { Link as ScrollLink } from "react-scroll";
 
-const DrawerContainer = styled.div<{ isOpen: boolean }>`
-  width: ${(props) => (props.isOpen ? "250px" : "80px")};
+const DrawerContainer = styled.div`
   background-color: #333;
   color: #fff;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: ${(props) => (props.isOpen ? "flex-start" : "center")};
+  height: 80px;
   transition: width 0.3s;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer; /* Para indicar que toda la barra es clicable */
-`;
-
-const ProfileContainer = styled.div<{ isOpen: boolean }>`
-  width: ${(props) => (props.isOpen ? "150px" : "50px")};
-  height: ${(props) => (props.isOpen ? "150px" : "50px")};
-  margin: 20px auto;
-  border: none;
-  transition: width 0.3s, height 0.3s;
   display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
-  pointer-events: none; /* Para que los clics pasen a través del contenedor */
+  background-color: #3333336b;
 `;
 
 const DrawerWrapper = styled.div`
-  position: fixed;
-  height: 100%;
+  height: 80px;
+  width: 100vw;
+  background-color: #3333336b;
 `;
 
-const Spacer = styled.div`
-  flex-grow: 1; /* Empuja los elementos a los extremos */
-`;
+const Spacer = styled.div``;
 
-interface NavbarProps {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Navbar: React.FC = () => {
   return (
     <DrawerWrapper>
-      <Drawer
-        variant="permanent"
-        anchor="left"
-        PaperProps={{
-          style: {
-            position: "relative",
-            overflow: "visible",
-            height: "100vh",
-            border: "none",
-          },
-        }}
-      >
-        <DrawerContainer isOpen={isOpen} onClick={handleToggle}>
-          <ProfileContainer isOpen={isOpen}>
-            <Avatar
-              src={require("../assets/profile.jpg")}
-              alt="Tomás Rossi"
-              style={{ width: "100%", height: "100%" }} // Ajustar el tamaño del Avatar al tamaño del contenedor
-            />
-          </ProfileContainer>
-          <List>
+      <Drawer variant="permanent" anchor="top" sx={{}}>
+        <DrawerContainer>
+          <List
+            style={{
+              listStyle: "none",
+              margin: "0",
+              padding: 0,
+              position: "relative",
+              paddingTop: "8px",
+              display: "flex",
+              paddingBottom: "8px",
+              alignItems: "center",
+              flexDirection: "row",
+              justifyContent: "center",
+              backgroundColor: "rgb(51 51 51 / 0%)",
+              width: "fitContent",
+            }}
+          >
             <ScrollLink to="about" smooth={true} duration={500} offset={-70}>
               <ListItem button>
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <Person />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Sobre mí" />}
+                <ListItemText primary="Sobre mí" />
               </ListItem>
             </ScrollLink>
             <ScrollLink to="skills" smooth={true} duration={500} offset={-70}>
@@ -99,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <Code />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Habilidades" />}
+                <ListItemText primary="Habilidades" />
               </ListItem>
             </ScrollLink>
             <ScrollLink
@@ -112,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <Description />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Conocimientos" />}
+                <ListItemText primary="Conocimientos" />
               </ListItem>
             </ScrollLink>
             <ScrollLink
@@ -125,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <SchoolIcon />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Estudios" />}
+                <ListItemText primary="Estudios" />
               </ListItem>
             </ScrollLink>
             <ScrollLink
@@ -138,7 +112,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <Work />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Experiencia" />}
+                <ListItemText primary="Experiencia" />
               </ListItem>
             </ScrollLink>
             <ScrollLink to="contact" smooth={true} duration={500} offset={-70}>
@@ -146,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <ContactMail />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="Contacto" />}
+                <ListItemText primary="Contacto" />
               </ListItem>
             </ScrollLink>
             <ScrollLink to="cv" smooth={true} duration={500} offset={-70}>
@@ -154,7 +128,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, setIsOpen }) => {
                 <ListItemIcon style={{ color: "#fff", marginLeft: "25px" }}>
                   <Description />
                 </ListItemIcon>
-                {isOpen && <ListItemText primary="CV" />}
+                <ListItemText primary="CV" />
               </ListItem>
             </ScrollLink>
           </List>
