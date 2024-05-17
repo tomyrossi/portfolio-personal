@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "./theme";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -9,8 +8,13 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import CV from "./components/CV";
 import Knowledge from "./components/Knowledge";
-import GlobalStyle from "./globalStyles";
 import Education from "./components/Education";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
+import { Home } from "@mui/icons-material";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Youtube from "./services/youtube";
 
 const AppContainer = styled.div<{ isOpen: boolean }>`
   font-family: Arial, sans-serif;
@@ -26,34 +30,15 @@ const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <GlobalStyle />
-      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
-      <AppContainer isOpen={isOpen}>
-        <div className="fadeInUp">
-          <About />
-        </div>
-        <div className="fadeInUp">
-          <Skills />
-        </div>
-        <div className="fadeInUp">
-          <Knowledge />
-        </div>
-        <div className="fadeInUp">
-          <Education />
-        </div>
-        <div className="fadeInUp">
-          <Experience />
-        </div>
-        <div className="fadeInUp">
-          <Contact />
-        </div>
-        <div className="fadeInUp">
-          <CV />
-        </div>
-      </AppContainer>
-    </ThemeProvider>
+    <div className="app-container">
+      <Header />
+      <Main>
+        <Home />
+        <About />
+      </Main>
+      <Sidebar />
+      <Footer />
+    </div>
   );
 };
 
